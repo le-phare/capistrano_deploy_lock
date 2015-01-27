@@ -66,6 +66,8 @@ module Capistrano
   end
 end
 
+load File.expand_path("../tasks/deploy_lock.rake", __FILE__)
+
 # Load recipe if required from deploy script
 namespace :load do
   task :defaults do
