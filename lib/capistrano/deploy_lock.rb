@@ -62,10 +62,13 @@ module Capistrano
         message << "\nLock must be manually removed with: cap #{stage ? stage + ' ' : ''}deploy:unlock"
       end
     end
+
   end
 end
 
 # Load recipe if required from deploy script
-if defined?(Capistrano::Configuration) && Capistrano::Configuration.instance
-  require 'capistrano/recipes/deploy_lock'
+namespace :load do
+  task :defaults do
+    load 'capistrano/recipes/deploy_lock.rb'
+  end
 end
